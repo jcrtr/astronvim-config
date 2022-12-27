@@ -470,8 +470,7 @@ local config = {
         -- SQL
         "sql_formatter",
         -- Python
-        "pylint",
-        "flake8",
+        "black",
         -- JSON
         "jq",
       },
