@@ -222,11 +222,12 @@ local config = {
   -- Configure plugins
   plugins = {
     init = {
+
+      "jvirtanen/vim-hcl",
       "dracula/vim",
       "Pocco81/auto-save.nvim",
       -- You can disable default plugins as follows:
       -- ["goolord/alpha-nvim"] = { disable = true },
-
 
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
@@ -248,19 +249,20 @@ local config = {
       -- },
     },
 
-    bufferline = { options = {
-      separator_style = "slant",
-      diagnostics = "nvim_lsp",
-      diagnostics_indicator = function(count, level, diagnostics_dict, context)
-        local s = " "
-        for e, n in pairs(diagnostics_dict) do
-          local sym = e == "error" and "  "
-              or (e == "warning" and "  " or "  ")
-          s = s .. n .. sym
-        end
-        return s
-      end
-    } },
+    bufferline = {
+      options = {
+        separator_style = "slant",
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          local s = " "
+          for e, n in pairs(diagnostics_dict) do
+            local sym = e == "error" and "  " or (e == "warning" and "  " or "  ")
+            s = s .. n .. sym
+          end
+          return s
+        end,
+      },
+    },
 
     heirline = function(config)
       -- the first element of the configuration table is the statusline
@@ -391,17 +393,90 @@ local config = {
       return config -- return final config table
     end,
     treesitter = { -- overrides `require("treesitter").setup(...)`
-      -- ensure_installed = { "lua" },
+      ensure_installed = {
+        "lua",
+        "css",
+        "dart",
+        "dockerfile",
+        "graphql",
+        "html",
+        "javascript",
+        "jsdoc",
+        "json",
+        "markdown",
+        "python",
+        "scss",
+        "sql",
+        "toml",
+        "tsx",
+        "typescript",
+        "yaml",
+      },
     },
     -- use mason-lspconfig to configure LSP installations
     ["mason-lspconfig"] = { -- overrides `require("mason-lspconfig").setup(...)`
-      -- ensure_installed = { "sumneko_lua" },
+      ensure_installed = {
+        "sumneko_lua",
+        -- Ansible
+        "ansiblels",
+        -- Bash
+        "bashls",
+        -- CSS
+        "cssls",
+        -- Docker
+        "dockerls",
+        -- eslint
+        "eslint",
+        -- ember
+        "ember",
+        -- graphql
+        "graphql",
+        -- html
+        "html",
+        -- jsonls
+        "jsonls",
+        -- JavaScript
+        "tsserver",
+        -- Markdown
+        "marksman",
+        -- Python
+        "pyright",
+        -- SQL
+        "sqlls",
+        -- TOML
+        "taplo",
+        -- Tailwind CSS
+        "tailwindcss",
+        -- TypeScript
+        "tsserver",
+        -- YAML
+        "yamlls",
+      },
     },
     -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
     ["mason-null-ls"] = { -- overrides `require("mason-null-ls").setup(...)`
-      -- ensure_installed = { "prettier", "stylua" },
+      ensure_installed = {
+        -- lua
+        "stylua",
+        -- dockerfile
+        "hadolint",
+        -- gitcommit
+        "gitlint",
+        -- JavaScript
+        "prettier",
+        "prettierd",
+        -- TOML
+        "taplo",
+        -- SQL
+        "sql_formatter",
+        -- Python
+        "pylint",
+        "flake8",
+        -- JSON
+        "jq",
+      },
     },
-    ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
+    ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`son
       -- ensure_installed = { "python" },
     },
   },
