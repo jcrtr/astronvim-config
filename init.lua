@@ -471,6 +471,8 @@ local config = {
         "sql_formatter",
         -- Python
         "black",
+        "pylint",
+        "mypy",
         -- JSON
         "jq",
       },
